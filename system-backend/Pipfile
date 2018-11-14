@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "~=2.1"
+"psycopg2" = "*"
+python-decouple = "*"
+
+[dev-packages]
+"pep8-naming" = "*"
+"flake8-builtins" = "*"
+"flake8-commas" = "*"
+"flake8-quotes" = "*"
+"flake8-blind-except" = "*"
+"flake8-bugbear" = "*"
+"flake8-comprehensions" = "*"
+"flake8-pep3101" = "*"
+"flake8-docstrings" = "*"
+"flake8-coding" = "*"
+"flake8-module-name" = "*"
+"flake8-pytest" = "*"
+"flake8-string-format" = "*"
+"flake8-debugger" = "*"
+
+[requires]
+python_version = "3.6.6"
