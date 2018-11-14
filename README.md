@@ -12,7 +12,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-vue.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/gluten-free.svg)](https://forthebadge.com)
 
-A full stack boilerplate using a dockeriside Django-REST backend and a Vue.js frontend
+A full stack boilerplate using a dockerised Django-REST backend and a Vue.js frontend
 
 <details>
 
