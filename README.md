@@ -33,7 +33,7 @@ To start using the boilerplate, you need to have the following installed:
 
 - [Docker CE](https://docs.docker.com/install/) - This is used to containerise the Django application
 - [Node.js](https://nodejs.org/en/)
-- [Python3](https://python.org/en)
+- [Python3](https://www.python.org/downloads/release/python-367/)
 
 ## Backend
 
