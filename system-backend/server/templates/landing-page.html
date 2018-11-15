@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DjangoREST-Vue</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/fonts.css" />
+  </head>
+  <body>
+    <main>
+      <div class="wrapper">
+        {% include 'rocketman.svg' %}
+        <h1 class="text-center">Congratulations!</h1>
+        <p>You've managed to set up your new Django backend application.</p>
+      </div>
+    </main>
+
+    <style>
+      body {
+        font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+          "Helvetica Neue", sans-serif;
+        color: #ececec;
+        background-color: #1d1d1d;
+        overflow: hidden;
+      }
+
+      h1 {
+        color: #f9f9f9;
+        font-size: 22px;
+        max-width: 500px;
+        margin: 5px auto 0;
+      }
+
+      svg {
+        height: 60%;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .wrapper {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+  <script>
+    var jetBubbles = document.getElementsByClassName("jetBubble");
+    var rocketManSVG = document.querySelector(".rocketManSVG");
+    var shakeGroup = document.querySelector(".shakeGroup");
+    var star = document.querySelector(".star");
+    var astronaut = document.querySelector(".astronaut");
+    var starContainer = document.querySelector(".starContainer");
+
+    TweenMax.to(astronaut, 0.1, {
+      y: "+=4",
+      repeat: -1,
+      yoyo: true
+    });
+    var mainTimeline = new TimelineMax({ repeat: -1 });
+
+    mainTimeline.timeScale(6).seek(100);
+
+    function createJets() {
+      TweenMax.set(jetBubbles, {
+        attr: {
+          r: "-=5"
+        }
+      });
+      //jet bubbles
+      for (var i = 0; i < jetBubbles.length; i++) {
+        var jb = jetBubbles[i];
+        var tl = new TimelineMax({ repeat: -1 });
+        tl.to(jb, 1, {
+          attr: {
+            r: "+=15"
+          },
+          ease: Linear.easeNone
+        }).to(jb, 1, {
+          attr: {
+            r: "-=15"
+          },
+          ease: Linear.easeNone
+        });
+
+        mainTimeline.add(tl, i / 4);
+      }
+      //stars
+      for (var i = 0; i < 7; i++) {
+        var sc = star.cloneNode(true);
+        starContainer.appendChild(sc);
+        var calc = (i + 1) / 2;
+
+        TweenMax.fromTo(
+          sc,
+          calc,
+          {
+            x: Math.random() * 600,
+            y: -30,
+            scale: 3 - calc
+          },
+          {
+            y: Math.random() * 100 + 600,
+            repeat: -1,
+            repeatDelay: 1,
+            ease: Linear.easeNone
+          }
+        );
+      }
+
+      rocketManSVG.removeChild(star);
+    }
+
+    TweenMax.staggerTo(
+      ".pulse",
+      0.8,
+      {
+        alpha: 0,
+        repeat: -1,
+        ease: Power2.easeInOut,
+        yoyo: false
+      },
+      0.1
+    );
+
+    createJets();
+  </script>
+</html>
