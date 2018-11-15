@@ -6,7 +6,8 @@ services:
     restart: unless-stopped
     volumes:
       - pgdata:/var/lib/postgresql/data
-    env_file: ./config/.env
+    env_file: 
+      - ./config/.env
 
   web:
     <<: &web
